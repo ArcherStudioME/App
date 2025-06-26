@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArcherStudio</title>
+</head>
+<body>
+<script>
+window.addEventListener('load', () => {
+  const hash = window.location.hash.slice(1);
+  const params = new URLSearchParams(hash);
+
+  const token = params.get('token');
+  const message = params.get('message');
+
+  if (token) {
+    localStorage.setItem('userToken', token);
+    localStorage.setItem('userMessage', message);
+    
+    // Redirect or update UI
+    window.location.href = '/dashboard.html';
+  }
+});
+</script>
+</body>
+</html>
