@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ArcherStudio</title>
+  <title>Redirecting...</title>
 </head>
 <body>
 <script>
@@ -11,16 +11,18 @@ window.addEventListener('load', () => {
   const hash = window.location.hash.slice(1);
   const params = new URLSearchParams(hash);
 
-  const token = params.get('token');
-  const message = params.get('message');
+  let destination = '/'; // default fallback
 
-  if (token) {
-    localStorage.setItem('userToken', token);
-    localStorage.setItem('userMessage', message);
-    
-    // Redirect or update UI
-    window.location.href = '/dashboard.html';
+  for (const [key, value] of params.entries()) {
+    if (key === 'linkm') {
+      destination = decodeURIComponent(value);
+    } else {
+      localStorage.setItem(key, value);
+    }
   }
+
+  // Redirect to the final destination
+  window.location.href = destination;
 });
 </script>
 </body>
