@@ -1,0 +1,19 @@
+# Enable the rewrite engine
+RewriteEngine On
+
+# Custom error documents
+ErrorDocument 400 /400.php
+ErrorDocument 401 /401.php
+ErrorDocument 403 /403.php
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+
+# Rewrite rule for PHP files without .php extension, including subfolders
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)/?$ $1.php [NC,L]
+
+# Rewrite rule for HTML files without .html extension, including subfolders
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)/?$ $1.html [NC,L]

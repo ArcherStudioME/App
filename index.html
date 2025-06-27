@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArcherStudio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+:root {
+  --main-dark: #121212;
+  --darker: #1a1a1a;
+  --highlight: #c1cefe;
+  --light-gray: #f9f9f9;
+  --text-light: #e8e9ed;
+  --text-muted: #aaaaaa;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--main-dark);
+  color: var(--text-light);
+}
+
+.navbar {
+  background-color: var(--darker) !important;
+  transition: top 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand {
+  color: var(--text-light);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .nav-link:hover,
+.navbar-dark .navbar-brand:hover {
+  color: var(--highlight);
+}
+
+.dropdown-menu {
+  background-color: var(--darker);
+  border: none;
+}
+
+.dropdown-item {
+  color: var(--text-light);
+}
+
+.dropdown-item:hover {
+  color: var(--highlight);
+  background-color: #2a2a2a;
+}
+
+.sticky-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+a.btn.btn-lg {
+    background: #7dd8c8;
+    color: black;
+    transition: background 0.3s, color 0.3s;
+}
+
+a.btn.btn-lg:hover {
+    background: #5ec5b4; /* slightly darker teal */
+    color: white;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/resources/img/app-bg.png') no-repeat center/cover;
+  filter: brightness(0.3) grayscale(.8) blur(5px);
+  transform: scale(1.05);
+  z-index: 0;
+}
+
+.hero * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 1rem 0 1.5rem;
+  color: var(--text-muted);
+}
+
+section {
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-white {
+  background: var(--darker);
+  color: var(--text-light);
+}
+
+.section-red {
+  background: var(--darker);
+  color: var(--text-light);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: var(--highlight);
+}
+
+.process-step {
+  text-align: center;
+}
+
+.testimonial-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.carousel-inner img {
+  height: 300px;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
+footer {
+  background: var(--darker);
+  color: var(--text-light);
+  padding: 40px 0;
+  text-align: center;
+}
+
+footer a {
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--highlight);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .carousel-inner img {
+    height: 200px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/"><img src="/resources/img/logo/app-logo.png" alt="Logo" class="me-2" style="height: 40px;"></i>ArcherPrint</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+
+          <!-- DROPDOWN: Products -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="productsDropdown">
+              <li><a class="dropdown-item" href="#products">Featured Promo</a></li>
+              <li><a class="dropdown-item" href="#">Products</a></li>
+              <li><a class="dropdown-item" href="#">Discount</a></li>
+            </ul>
+          </li>
+
+          <!-- DROPDOWN: How It Works -->
+          <li class="nav-item"><a class="nav-link" href="#process">How It Works</a></li>
+
+          <!-- DROPDOWN: Contact -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Contact
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="contactDropdown">
+              <li><a class="dropdown-item" href="#contact">Store Info</a></li>
+              <li><a class="dropdown-item" href="tel:09700337672">Call Us</a></li>
+              <li><a class="dropdown-item" href="mailto:main.archercorporation@gmail.com">Email Us</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="register">Sign up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Hero Section -->
+<div class="hero text-center">
+  <h1>From Vision to Reality</h1>
+  <p>Fast. Simple. Hassle-Free.</p>
+  <a href="#products" class="btn btn-lg">Order Now</a>
+</div>
+
+
+
+  <!-- About Section -->
+  <section id="about" class="section-red text-center">
+    <div class="container">
+      <h2>About Our Services</h2>
+      <p class="lead mt-3">
+        Our platform automates ordering, computes totals instantly, sends live updates, and simplifies your workflow.
+        With seamless integration for print jobs, we ensure faster turnaround times, accurate file handling, and real-time job tracking—whether it's business cards, tarpaulins, or photo prints. ArcherStudio brings clarity and convenience to every step of the printing process.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section id="products" class="section-white">
+    <div class="container">
+      <h2 class="text-center mb-5">Featured Promos</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <img src="https://ag-pro.com.au/wp-content/uploads/2020/10/Coming-soon1.jpg" class="card-img-top" alt="Beer">
+            <div class="card-body text-center">
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-outline-primary disabled">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <img src="https://ag-pro.com.au/wp-content/uploads/2020/10/Coming-soon1.jpg" class="card-img-top" alt="Beer">
+            <div class="card-body text-center">
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-outline-primary disabled">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow-sm">
+            <img src="https://ag-pro.com.au/wp-content/uploads/2020/10/Coming-soon1.jpg" class="card-img-top" alt="Beer">
+            <div class="card-body text-center">
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-outline-primary disabled">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Why Use ArcherStudio -->
+<section class="section-red text-center">
+  <div class="container">
+    <h2>Why Choose ArcherStudio</h2>
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <i class='bx bx-timer feature-icon'></i>
+        <h5>Lightning-Fast Service</h5>
+        <p>From order to output in as little as 0–3 days. We move fast, so your prints are never late.</p>
+      </div>
+      <div class="col-md-4">
+        <i class='bx bx-calculator feature-icon'></i>
+        <h5>Smart & Automated</h5>
+        <p>Our system calculates totals, applies discounts, and tracks orders in real time—so you don’t have to.</p>
+      </div>
+      <div class="col-md-4">
+        <i class='bx bx-shield-alt-2 feature-icon'></i>
+        <h5>Reliable Quality</h5>
+        <p>We use only high-grade materials and trusted printing processes to ensure vibrant, accurate, and lasting results.</p>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <i class='bx bx-cloud-upload feature-icon'></i>
+        <h5>Effortless Uploads</h5>
+        <p>Upload your files directly—no emails or extra steps. Our platform handles everything smoothly.</p>
+      </div>
+      <div class="col-md-4">
+        <i class='bx bx-bell feature-icon'></i>
+        <h5>Real-Time Updates</h5>
+        <p>Stay in the loop with every stage of your order: from confirmation to print to pickup or delivery.</p>
+      </div>
+      <div class="col-md-4">
+        <i class='bx bx-color feature-icon'></i>
+        <h5>Designed for Creatives</h5>
+        <p>Tailor-made for artists, photographers, and entrepreneurs who demand precision and aesthetic quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- How It Works -->
+<section id="process" class="section-white text-center">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="row mt-4">
+
+      <div class="col-md-3 process-step">
+        <i class='bx bx-upload feature-icon'></i>
+        <h6>Upload Files</h6>
+        <p class="text-light small">Easily upload your design.</p>
+      </div>
+
+      <div class="col-md-3 process-step">
+        <i class='bx bx-list-check feature-icon'></i>
+        <h6>Customize & Review</h6>
+        <p class="text-light small">Select quantity, materials, and finishes. Instantly preview your order summary.</p>
+      </div>
+
+      <div class="col-md-3 process-step">
+        <i class='bx bx-credit-card feature-icon'></i>
+        <h6>Place Your Order</h6>
+        <p class="text-light small">Real-time updates and automated invoice generation.</p>
+      </div>
+
+      <div class="col-md-3 process-step">
+        <i class='bx bx-package feature-icon'></i>
+        <h6>Print & Deliver</h6>
+        <p class="text-light small">We’ll process, print, and prepare your order for pickup or doorstep delivery.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Gallery Carousel -->
+  <section class="section-red">
+    <div class="container">
+      <h2 class="text-center mb-4">Gallery</h2>
+      <div id="carouselExample" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner rounded">
+          <div class="carousel-item active">
+            <img src="https://source.unsplash.com/800x400/?beer" class="d-block w-100" alt="Beer">
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/800x400/?brewery" class="d-block w-100" alt="Brewery">
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/800x400/?bar" class="d-block w-100" alt="Bar">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store Info -->
+  <section id="contact" class="section-white text-center">
+    <div class="container">
+      <h2>Store Updates & Info</h2>
+      <p id="store-status" class="fs-4 mt-3 fw-bold">STORE CLOSED</p>
+      <p>Mon–Sun: 8 AM–7 PM</p>
+      <p>Contact: 0970-033-7672 | 0993-608-8565</p>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="section-red text-center">
+  <div class="container">
+    <h2>Find Us</h2>
+    <p class="mb-3">Visit our physical store location.</p>
+    <div class="d-flex justify-content-center">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.3402761578276!2d121.14581951699546!3d14.573733951216667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c700170ad6e9%3A0x53ccf1c9c658aa01!2sBeer%20Master%20Trading%20Inc.!5e0!3m2!1sen!2sph!4v1749996937695!5m2!1sen!2sph"
+        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+  <!-- Testimonials -->
+  <section class="section-white text-center">
+    <div class="container">
+      <h2>Testimonials</h2>
+      <div id="testiCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://source.unsplash.com/80x80/?person1" class="testimonial-img mb-3" alt="">
+            <p>"Amazing service – orders delivered in hours!"</p>
+            <strong>– Juan D.</strong>
+          </div>
+          <div class="carousel-item">
+            <img src="https://source.unsplash.com/80x80/?person2" class="testimonial-img mb-3" alt="">
+            <p>"Convenient, easy-to-use ordering platform."</p>
+            <strong>– Maria S.</strong>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testiCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testiCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#process">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Contact</h5>
+          <p>0970-033-7672<br>0993-608-8565</p>
+          <p>Mon–Sun: 8 AM–7 PM</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Follow Us</h5>
+          <a href="#" class="mx-2"><i class='bx bxl-facebook'></i></a>
+          <a href="#" class="mx-2"><i class='bx bxl-instagram'></i></a>
+          <a href="#" class="mx-2"><i class='bx bxl-twitter'></i></a>
+        </div>
+      </div>
+      <p class="mb-0">&copy; 2025 ArcherStudio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/resources/js/store-status.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("section").forEach(sec => {
+        const obs = new IntersectionObserver(([e]) => {
+          if (e.isIntersecting) { sec.classList.add("show"); obs.disconnect(); }
+        }, { threshold: 0.2 });
+        obs.observe(sec);
+      });
+    });
+  </script>
+</body>
+</html>

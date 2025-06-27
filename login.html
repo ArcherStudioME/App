@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ArcherStudio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+:root {
+  --main-dark: #121212;
+  --darker: #1a1a1a;
+  --highlight: #c1cefe;
+  --light-gray: #f9f9f9;
+  --text-light: #e8e9ed;
+  --text-muted: #aaaaaa;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--main-dark);
+  color: var(--text-light);
+}
+
+.navbar {
+  background-color: var(--darker) !important;
+  transition: top 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand {
+  color: var(--text-light);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .nav-link:hover,
+.navbar-dark .navbar-brand:hover {
+  color: var(--highlight);
+}
+
+.dropdown-menu {
+  background-color: var(--darker);
+  border: none;
+}
+
+.dropdown-item {
+  color: var(--text-light);
+}
+
+.dropdown-item:hover {
+  color: var(--highlight);
+  background-color: #2a2a2a;
+}
+
+.sticky-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+iframe {
+  border: none;
+  width: -webkit-fill-available;
+  height: 100vh; /* Default for mobile */
+  display: block;
+  margin-top: 4rem;
+}
+footer {
+  background: var(--darker);
+  color: var(--text-light);
+  padding: 40px 0;
+  text-align: center;
+}
+
+footer a {
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--highlight);
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/"><img src="/resources/img/logo/app-logo.png" alt="Logo" class="me-2" style="height: 40px;"></i>ArcherPrint</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          
+<li class="nav-item">
+  <a class="nav-link" href="#" id="toggleMode">Forgot Password</a>
+</li>
+
+          <li class="nav-item"><a class="nav-link" href="register">Sign up</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Hero Section -->
+<div class="hero text-center">
+	<iframe src="https://script.google.com/macros/s/AKfycbyZZog4dSiPDTxSD-36qmURF1p5h-Q4LhGFpqA_0C67cpNPyMmE_X8ukyIySe61J-iJOQ/exec?type=login"></iframe>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#process">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Contact</h5>
+          <p>0970-033-7672<br>0993-608-8565</p>
+          <p>Mon–Sun: 8 AM–7 PM</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Follow Us</h5>
+          <a href="#" class="mx-2"><i class='bx bxl-facebook'></i></a>
+          <a href="#" class="mx-2"><i class='bx bxl-instagram'></i></a>
+          <a href="#" class="mx-2"><i class='bx bxl-twitter'></i></a>
+        </div>
+      </div>
+      <p class="mb-0">&copy; 2025 ArcherStudio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  const iframe = document.querySelector('iframe');
+  const toggleLink = document.getElementById('toggleMode');
+
+  let isLogin = true;
+
+  toggleLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (isLogin) {
+      iframe.src = "https://script.google.com/macros/s/AKfycbyZZog4dSiPDTxSD-36qmURF1p5h-Q4LhGFpqA_0C67cpNPyMmE_X8ukyIySe61J-iJOQ/exec?type=forgot";
+      toggleLink.textContent = "Back to Login";
+    } else {
+      iframe.src = "https://script.google.com/macros/s/AKfycbyZZog4dSiPDTxSD-36qmURF1p5h-Q4LhGFpqA_0C67cpNPyMmE_X8ukyIySe61J-iJOQ/exec?type=login";
+      toggleLink.textContent = "Forgot Password";
+    }
+    isLogin = !isLogin;
+  });
+</script>
+
+</body>
+</html>
