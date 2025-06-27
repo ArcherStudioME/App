@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
   const hash = window.location.hash.slice(1);
   const params = new URLSearchParams(hash);
 
-  let destination = '/'; // default fallback
+  let destination = '/app/';
 
   for (const [key, value] of params.entries()) {
     if (key === 'linkm') {
@@ -21,8 +21,11 @@ window.addEventListener('load', () => {
     }
   }
 
-  // Redirect to the final destination
-  window.location.href = destination;
+  if (window.parent !== window) {
+    window.parent.location.href = destination;
+  } else {
+    window.location.href = destination;
+  }
 });
 </script>
 </body>
