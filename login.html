@@ -167,12 +167,15 @@ footer a:hover {
   });
 </script>
 <script>
-window.addEventListener('message', (event) => {
-  const data = event.data;
-  if (data && data.type === 'redirect' && data.url) {
-    window.location.href = data.url;
+window.addEventListener("message", (event) => {
+  if (event.origin !== "https://archerstudiome.github.io") return;
+
+  const { type, url } = event.data || {};
+  if (type === "redirect" && url) {
+    window.location.href = url;
   }
 });
+
 </script>
 
 
