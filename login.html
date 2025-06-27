@@ -167,16 +167,24 @@ footer a:hover {
   });
 </script>
 <script>
-window.addEventListener("message", (event) => {
-  if (event.origin !== "https://archerstudiome.github.io") return;
+function waitForRedirectData() {
+  const link = localStorage.getItem('linkm');
 
-  const { type, url } = event.data || {};
-  if (type === "redirect" && url) {
-    window.location.href = url;
+  if (link) {
+    // Clear after reading
+    localStorage.removeItem('linkm');
+
+    // Redirect
+    window.location.href = decodeURIComponent(link);
+  } else {
+    // Retry after a short delay
+    setTimeout(waitForRedirectData, 500);
   }
-});
+}
 
+window.addEventListener('load', waitForRedirectData);
 </script>
+
 
 
 </body>
