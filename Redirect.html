@@ -10,12 +10,15 @@
 window.addEventListener('load', () => {
   const hash = window.location.hash.slice(1);
   const params = new URLSearchParams(hash);
+  const data = {};
 
   for (const [key, value] of params.entries()) {
-    localStorage.setItem(key, value);
+    data[key] = value;
   }
+
+  // Send the data to the parent window
+  window.parent.postMessage({ type: 'storeData', data }, '*'); // Replace '*' with origin if known
 });
 </script>
-
 </body>
 </html>
