@@ -166,6 +166,14 @@ footer a:hover {
     isLogin = !isLogin;
   });
 </script>
+<script>
+window.addEventListener('message', (event) => {
+  const data = event.data;
+  if (data && data.type === 'redirect' && data.url) {
+    window.location.href = data.url;
+  }
+});
+</script>
 
 
 </body>
