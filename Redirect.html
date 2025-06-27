@@ -20,13 +20,9 @@ window.addEventListener('load', () => {
       localStorage.setItem(key, value);
     }
   }
-
-  // Redirect the parent window instead of the iframe
-  if (window.parent !== window) {
-    window.parent.location.href = destination;
-  } else {
-    window.location.href = destination; // fallback if not in iframe
-  }
+  
+  window.location.href = destination;
+  
 });
 </script>
 </body>
