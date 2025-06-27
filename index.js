@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const APPSCRIPT_ENDPOINT = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+const APPSCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyxhbO_8BKjlYpdQxiZDDZOFPR52g_dNonHMnkQ2PE2NKY2TpPPnUlvFQmiPiHTnmREPw/exec';
 
 app.post('/login', async (req, res) => {
   try {
