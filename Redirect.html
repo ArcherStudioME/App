@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
   const hash = window.location.hash.slice(1);
   const params = new URLSearchParams(hash);
 
-  let destination = '/app/';
+  let destination = '/App/';
 
   for (const [key, value] of params.entries()) {
     if (key === 'linkm') {
@@ -21,12 +21,10 @@ window.addEventListener('load', () => {
     }
   }
 
-  if (window.parent !== window) {
-    window.parent.location.href = destination;
-  } else {
-    window.location.href = destination;
-  }
+  // Use postMessage to request parent to redirect
+  window.parent.postMessage({ type: 'redirect', url: destination }, '*');
 });
 </script>
+
 </body>
 </html>
