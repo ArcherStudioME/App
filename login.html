@@ -169,12 +169,23 @@ footer a:hover {
   });
 </script>
 	
-  <script>
-    window.addEventListener("message", (event) => {
-      console.log("Received:", event.data);
-      alert("Got message: " + JSON.stringify(event.data));
-    });
-  </script>
+<script>
+window.addEventListener('message', (event) => {
+  // Optional: check origin for security
+  if (event.origin !== "https://archerstudiome.github.io") return;
+
+  const message = event.data;
+
+  if (message?.type === 'storeData') {
+    const data = message.data;
+    for (const key in data) {
+      localStorage.setItem(key, data[key]);
+    }
+    console.log('Data stored in localStorage:', data);
+  }
+});
+</script>
+
 
 
 
