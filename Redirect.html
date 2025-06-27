@@ -11,18 +11,11 @@ window.addEventListener('load', () => {
   const hash = window.location.hash.slice(1);
   const params = new URLSearchParams(hash);
 
-  let destination = '/';
-
   for (const [key, value] of params.entries()) {
-    if (key === 'linkm') {
-      destination = decodeURIComponent(value);
-    } else {
-      localStorage.setItem(key, value);
-    }
+    localStorage.setItem(key, value);
   }
-
-  window.parent.postMessage({ type: 'redirect', url: destination }, '*');
 });
 </script>
+
 </body>
 </html>
