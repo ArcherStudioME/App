@@ -1,10 +1,17 @@
 const express = require('express');
-const axios = require('axios');
 const cors = require('cors');
+const axios = require('axios');
 const app = express();
 
-app.use(cors());
+// Fix: allow specific origin or use "*"
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
+
 
 const APPSCRIPT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyxhbO_8BKjlYpdQxiZDDZOFPR52g_dNonHMnkQ2PE2NKY2TpPPnUlvFQmiPiHTnmREPw/exec';
 
