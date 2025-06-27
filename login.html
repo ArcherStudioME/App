@@ -115,7 +115,9 @@ footer a:hover {
 
   <!-- Hero Section -->
 <div class="hero text-center">
-	<iframe src="https://script.google.com/macros/s/AKfycbyZZog4dSiPDTxSD-36qmURF1p5h-Q4LhGFpqA_0C67cpNPyMmE_X8ukyIySe61J-iJOQ/exec?type=login"></iframe>
+	<iframe src="https://script.google.com/macros/s/AKfycbyZZog4dSiPDTxSD-36qmURF1p5h-Q4LhGFpqA_0C67cpNPyMmE_X8ukyIySe61J-iJOQ/exec?type=login" 
+		sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-top-navigation">
+		></iframe>
 </div>
 
 
@@ -166,24 +168,13 @@ footer a:hover {
     isLogin = !isLogin;
   });
 </script>
-<script>
-function waitForRedirectData() {
-  const link = localStorage.getItem('linkm');
-
-  if (link) {
-    // Clear after reading
-    localStorage.removeItem('linkm');
-
-    // Redirect
-    window.location.href = decodeURIComponent(link);
-  } else {
-    // Retry after a short delay
-    setTimeout(waitForRedirectData, 500);
-  }
-}
-
-window.addEventListener('load', waitForRedirectData);
-</script>
+	
+  <script>
+    window.addEventListener("message", (event) => {
+      console.log("Received:", event.data);
+      alert("Got message: " + JSON.stringify(event.data));
+    });
+  </script>
 
 
 
