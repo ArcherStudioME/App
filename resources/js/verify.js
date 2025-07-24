@@ -15,8 +15,8 @@ function logout() {
 }
 
 // Check if expired
-const sessionExpiresAt = localStorage.getItem("sessionExpiresAt") || "0", 10;
-if (sessionExpiresAt && sessionExpiresAt !== "unlimited" && Date.now() > Number(sessionExpiresAt)) {
+const sessionExpiresAt = localStorage.getItem("sessionExpiresAt") || "0";
+if (sessionExpiresAt !== "unlimited" && Date.now() > Number(sessionExpiresAt)) {
   localStorage.clear();
   window.location.href = '/print/login?e=expire';
 }
