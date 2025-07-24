@@ -1,0 +1,194 @@
+:root {
+	--main-dark: #121212;
+	--darker: #1a1a1a;
+	--highlight: #c1cefe;
+	--light-gray: #f9f9f9;
+	--text-light: #e8e9ed;
+	--text-muted: #aaaaaa;
+	--card-bg: rgba(255, 255, 255, 0.05);
+	--card-border: rgba(255, 255, 255, 0.1);
+	--icon-accent: #a4baff;
+	--hover-glow: rgba(255, 255, 255, 0.08);
+	--text-main: #ffffff;
+	--text-subtle: rgba(255, 255, 255, 0.65);
+	--btn-border: #b3b3b3;
+}
+
+body.light-theme {
+  --main-dark: #ffffff;
+  --darker: #f0f0f0;
+  --highlight: #3246ff;
+  --text-light: #111111;
+  --text-subtle: rgba(0, 0, 0, 0.6);
+  --card-bg: rgba(0, 0, 0, 0.03);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --icon-accent: #3246ff;
+  --hover-glow: rgba(0, 0, 0, 0.08);
+  --text-main: #000000;
+  --btn-border: #4a4a4a;
+}
+
+
+html, body {
+	height: 100%;
+	margin: 0;
+	scroll-behavior: smooth;
+	font-family: 'Segoe UI', sans-serif;
+	background: var(--main-dark);
+	color: var(--text-light);
+	overflow: hidden;
+}
+
+.navbar {
+	background-color: var(--darker) !important;
+	transition: top 0.3s;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-brand {
+	color: var(--text-light);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .nav-link:hover,
+.navbar-dark .navbar-brand:hover {
+	color: var(--highlight);
+}
+
+.dropdown-menu {
+	background-color: var(--darker);
+	border: none;
+}
+
+.dropdown-item {
+	color: var(--text-light);
+}
+
+.dropdown-item:hover {
+	color: var(--highlight);
+	background-color: #2a2a2a;
+}
+
+.sticky-navbar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1030;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+a.btn.btn-lg {
+	background: #7dd8c8;
+	color: black;
+	transition: background 0.3s, color 0.3s;
+}
+
+a.btn.btn-lg:hover {
+	background: #5ec5b4;
+	color: white;
+}
+
+.glass-card {
+	background: var(--card-bg);
+	border-radius: 16px;
+	padding: 1.5rem;
+	backdrop-filter: blur(12px);
+	border: 1px solid var(--card-border);
+	color: var(--text-main);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 6px 20px var(--hover-glow);
+}
+
+.glass-icon {
+	font-size: 1.6rem;
+	color: var(--icon-accent);
+}
+
+.amount-text {
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--text-main);
+}
+
+.text-white {
+	color: var(--text-main) !important;
+}
+
+.text-white-50 {
+	color: var(--text-subtle) !important;
+}
+
+.btn-outline-light {
+	border-color: var(--btn-border);
+	color: var(--text-main);
+}
+
+.btn-outline-light:hover {
+	background: var(--hover-glow);
+	color: var(--text-main);
+	border-color: #ddd;
+}
+
+.badge {
+	font-size: 0.75rem;
+	padding: 0.4em 0.75em;
+	border-radius: 12px;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: var(--text-main);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.spinner-glass {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 6rem auto;
+
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+
+.ripple {
+	position: absolute;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.3);
+	transform: scale(0);
+	animation: ripple-animation 600ms ease-out;
+	pointer-events: none;
+	z-index: 1;
+}
+
+@keyframes ripple-animation {
+	to {
+		transform: scale(4);
+		opacity: 0;
+	}
+}
+
+.order-adjusted {
+  height: calc(100dvh - 70px - 50px) !important;
+}
+
+.order-full {
+  height: calc(100dvh - 70px) !important;
+}
+
+.hide-bottom-nav {
+  display: none !important;
+}
